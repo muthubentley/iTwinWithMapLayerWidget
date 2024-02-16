@@ -24,6 +24,8 @@
     "@itwin/imodel-components-react": "^4.9.0",
     "@itwin/imodels-access-frontend": "^4.1.4",
     "@itwin/itwinui-react": "^2.12.23",
+    "@itwin/map-layers": "^5.3.1",
+    "@itwin/map-layers-formats": "^4.4.0",
     "@itwin/measure-tools-react": "^0.13.0",
     "@itwin/presentation-common": "^4.4.0",
     "@itwin/presentation-components": "^4.4.0",

@@ -37,6 +37,8 @@ import React, { useCallback, useEffect, useMemo, useState } from "react";
 
 import { Auth } from "./Auth";
 import { history } from "./history";
+import { MapLayersUI, MapLayersUiItemsProvider } from "@itwin/map-layers";
+import { ApiKeys } from "./ApiKeys";
 
 const App: React.FC = () => {
   const [iModelId, setIModelId] = useState(process.env.IMJS_IMODEL_ID);
@@ -134,6 +136,7 @@ const App: React.FC = () => {
     await PropertyGridManager.initialize();
     await MeasureTools.startup();
     MeasurementActionToolbar.setDefaultActionProvider();
+    await MapLayersUI.initialize();
   }, []);
 
   return (
@@ -153,6 +156,7 @@ const App: React.FC = () => {
         viewCreatorOptions={viewCreatorOptions}
         enablePerformanceMonitors={true} // see description in the README (https://www.npmjs.com/package/@itwin/web-viewer-react)
         onIModelAppInit={onIModelAppInit}
+        mapLayerOptions={{ BingMaps: { key: "key", value: ApiKeys.BingMapsKey } }}
         uiProviders={[
           new ViewerNavigationToolsProvider(),
           new ViewerContentToolsProvider({
@@ -182,6 +186,7 @@ const App: React.FC = () => {
             },
           }),
           new MeasureToolsUiItemsProvider(),
+          new MapLayersUiItemsProvider(),
         ]}
       />
     </div>
